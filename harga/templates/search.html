@@ -6,7 +6,7 @@
     {% for result in page.object_list %}
         <p>
             {{ result.object.nama }} RM{{ result.object.harga }}<br />
-            <span class="small">Premis: {{ result.object.premis }}</span>
+            <span class="small">Premis: {{ result.object.premis }}, {{ result.object.kawasan.kawasan }}, {{ result.object.kawasan.negeri }}</span>
             <span class="small">Tarikh: {{ result.object.tarikh }}</span>
         </p>
     {% empty %}

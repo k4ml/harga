@@ -22,6 +22,15 @@ class Keyword(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
 
+class Kawasan(models.Model):
+    oid = models.IntegerField(primary_key=True, db_column='oid')
+    nama_negeri = models.TextField(blank=True)
+    nama_kawasan = models.TextField(blank=True)
+    kod_kawasan = models.TextField(blank=True)
+    kod_negeri = models.TextField(blank=True)
+    class Meta:
+        db_table = u'kawasan'
+
 class Product(models.Model):
     oid = models.IntegerField(primary_key=True, db_column='oid')
     harga = models.TextField(blank=True)
@@ -32,6 +41,12 @@ class Product(models.Model):
     kategori = models.TextField(blank=True)
     kod_barang = models.TextField(blank=True)
     premis = models.TextField(blank=True)
+
+    def get_kawasan(self):
+        # naive, but we'll get to this later
+        kaw = Kawasan.objects.get(kod_kawasan=self.kod_kawasan, kod_negeri=self.kod_negeri)
+        return {'kawasan': kaw.nama_kawasan, 'negeri': kaw.nama_negeri}
+    kawasan = property(get_kawasan)
 
     class Meta:
         db_table = u'swdata'

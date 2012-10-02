@@ -1,2 +1,4 @@
 {{ object.nama }}
 {{ object.premis }}
+{{ object.kawasan.kawasan }}
+{{ object.kawasan.negeri }}
