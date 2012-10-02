@@ -5,8 +5,9 @@
     <h2>Keputusan {% if page.paginator.count %} - {{ page.paginator.count }} ditemui.{% endif %}</h2>
     {% for result in page.object_list %}
         <p>
-            {{ result.object.name }}<br />
-            <span class="small">Tarikh tamat: {{ result.object.expired|date:'d-m-Y' }} <a href="{{ result.object.source.url }}">Sumber JAKIM</a></span>
+            {{ result.object.nama }} RM{{ result.object.harga }}<br />
+            <span class="small">Premis: {{ result.object.premis }}</span>
+            <span class="small">Tarikh: {{ result.object.tarikh }}</span>
         </p>
     {% empty %}
         <p>Tiada keputusan ditemui. {% if messages %} {{ messages }} {% endif %}</p>

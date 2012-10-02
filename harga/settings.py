@@ -100,7 +100,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
-ROOT_URLCONF = 'halal.urls'
+ROOT_URLCONF = 'harga.urls'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
@@ -115,7 +115,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'halal',
+    'harga',
     'haystack',
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
@@ -149,7 +149,7 @@ LOGGING = {
             'level': 'ERROR',
             'propagate': True,
         },
-        'halal': {
+        'harga': {
             'handlers': ['tofile'],
             'level': 'DEBUG',
             'propagate': True,
@@ -170,6 +170,6 @@ LOGGING = {
     },
 }
 
-HAYSTACK_SITECONF = 'halal.search_sites'
+HAYSTACK_SITECONF = 'harga.search_sites'
 HAYSTACK_SEARCH_ENGINE = 'whoosh'
 HAYSTACK_WHOOSH_PATH = os.path.join(HERE, 'whoosh_index')

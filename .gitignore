@@ -1,9 +1,9 @@
 *.pyc
 *.swp
-halal/whoosh_index
-halal/logs
-halal/htdocs
+harga/whoosh_index
+harga/logs
+harga/htdocs
 bin
 include
 lib
-halal/local_settings.py
+harga/local_settings.py

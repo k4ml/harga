@@ -16,34 +16,22 @@
 
 from django.db import models
 
-class Company(models.Model):
-    name = models.TextField()
-
-class Scrap(models.Model):
-    url = models.TextField()
-    content = models.TextField(blank=True)
-    has_result = models.BooleanField(default=False)
-    created = models.DateTimeField(auto_now_add=True)
-    modified = models.DateTimeField(auto_now=True)
-
-class Product(models.Model):
-    CATEGORY = (
-        (1, 'Produk'),
-        (2, 'Premis'),
-    )
-    name = models.TextField()
-    expired = models.DateTimeField()
-    created = models.DateTimeField(auto_now_add=True)
-    modified = models.DateTimeField(auto_now=True)
-    category = models.IntegerField(choices=CATEGORY)
-    source = models.ForeignKey(Scrap)
-
 class Keyword(models.Model):
     name = models.CharField(max_length=255)
     count = models.IntegerField(default=1)
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
-    scrapped = models.BooleanField(default=False)
 
-    def __unicode__(self):
-        return u"%s" % self.name
+class Product(models.Model):
+    oid = models.IntegerField(primary_key=True, db_column='oid')
+    harga = models.TextField(blank=True)
+    nama = models.TextField(blank=True)
+    tarikh = models.TextField(blank=True)
+    kod_negeri = models.TextField(blank=True)
+    kod_kawasan = models.TextField(blank=True)
+    kategori = models.TextField(blank=True)
+    kod_barang = models.TextField(blank=True)
+    premis = models.TextField(blank=True)
+
+    class Meta:
+        db_table = u'swdata'

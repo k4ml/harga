@@ -26,8 +26,7 @@ from haystack.views import SearchView
 from haystack.forms import SearchForm
 from haystack.query import SearchQuerySet
 
-from halal.models import Product, Keyword
-from halal.scrape import search
+from harga.models import Product, Keyword
 
 class ProductSearchView(SearchView):
     form_class = SearchForm
@@ -47,11 +46,6 @@ class ProductSearchView(SearchView):
             kw_obj, kw_created = Keyword.objects.get_or_create(name=self.query)
             if not kw_created:
                 kw_obj.count = F('count') + 1
-
-            if result_count == 0 and not kw_obj.scrapped:
-                extra['messages'] = 'Dalam process mendapatkan data daripada laman JAKIM. Sila cuba sebentar lagi'
-            if result_count == 0 and kw_obj.scrapped:
-                extra['messages'] = ''
 
             kw_obj.save()
 

@@ -2,7 +2,7 @@ from django.conf.urls.defaults import patterns, include, url
 
 from haystack.views import search_view_factory
 
-from halal.views import ProductSearchView, tmp_result
+from harga.views import ProductSearchView, tmp_result
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
