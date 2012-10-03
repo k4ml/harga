@@ -39,7 +39,7 @@ class ProductSearchView(SearchView):
     def extra_context(self):
         extra = super(ProductSearchView, self).extra_context()
         qs = Keyword.objects.all().order_by('-modified')
-        extra['latest_searches'] = qs[:10]
+        extra['latest_searches'] = qs[:30]
         result_count = self.results.count()
 
         if self.query:
