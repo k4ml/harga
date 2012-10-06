@@ -3,7 +3,7 @@
 harga/whoosh_index
 harga/logs
 harga/htdocs
-harga/harga.db
+harga/pricewatch_harga.sqlite
 bin
 include
 lib
