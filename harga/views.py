@@ -14,9 +14,11 @@
 # ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 # OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
+import json
 import logging
 logger = logging.getLogger(__name__)
 
+from django.http import HttpResponse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, redirect
 from django.db.models import F
@@ -50,6 +52,27 @@ class ProductSearchView(SearchView):
             kw_obj.save()
 
         return extra
+
+    def create_response(self):
+        if self.request.GET.get('format', None) != 'json':
+            return super(ProductSearchView, self).create_response()
+
+        (paginator, page) = self.build_page()
+        out = {}
+        out['item_total'] = len(self.results)
+        out['item_per_page'] = paginator.per_page
+        out['page'] = page.number
+        out['items'] = []
+        for result in page.object_list:
+            item = {}
+            item['nama'] = result.object.nama
+            item['premis'] = result.object.premis
+            item['kawasan'] = result.object.kawasan
+            item['kod_kawasan'] = result.object.kod_kawasan
+            item['kod_negeri'] = result.object.kod_kawasan
+            out['items'].append(item)
+
+        return HttpResponse(json.dumps(out, indent=4), mimetype='application/json')
 
 def tmp_result(request):
     context = {}

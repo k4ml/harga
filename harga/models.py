@@ -28,8 +28,10 @@ class Kawasan(models.Model):
     nama_kawasan = models.TextField(blank=True)
     kod_kawasan = models.TextField(blank=True)
     kod_negeri = models.TextField(blank=True)
+
     class Meta:
         db_table = u'kawasan'
+        managed = False
 
 class Product(models.Model):
     oid = models.IntegerField(primary_key=True, db_column='oid')
@@ -50,3 +52,4 @@ class Product(models.Model):
 
     class Meta:
         db_table = u'swdata'
+        managed = False
