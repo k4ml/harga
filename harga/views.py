@@ -69,7 +69,10 @@ class ProductSearchView(SearchView):
             item['premis'] = result.object.premis
             item['kawasan'] = result.object.kawasan
             item['kod_kawasan'] = result.object.kod_kawasan
-            item['kod_negeri'] = result.object.kod_kawasan
+            item['kod_negeri'] = result.object.kod_negeri
+            item['kod_barang'] = result.object.kod_barang
+            item['kategori'] = result.object.kategori
+            item['tarikh'] = result.object.tarikh
             out['items'].append(item)
 
         return HttpResponse(json.dumps(out, indent=4), mimetype='application/json')
