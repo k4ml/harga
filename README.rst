@@ -1,4 +1,4 @@
-Live site - http://halal.it.cx/
+Live site - http://harga.smach.net/
 
 Getting Started
 ===============
