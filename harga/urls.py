@@ -1,5 +1,6 @@
 from django.conf.urls.defaults import patterns, include, url
 
+from haystack.query import SearchQuerySet
 from haystack.views import search_view_factory
 
 from harga.views import ProductSearchView, tmp_result
@@ -7,6 +8,8 @@ from harga.views import ProductSearchView, tmp_result
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
 # admin.autodiscover()
+
+search_sqs = SearchQuerySet().order_by('-tarikh')
 
 urlpatterns = patterns('',
     # Examples:
@@ -20,5 +23,8 @@ urlpatterns = patterns('',
     # url(r'^admin/', include(admin.site.urls)),
     url(r'^tmp_result/', tmp_result),
     url(r'^search/', include('haystack.urls'), name='haystack-search'),
-    url(r'', search_view_factory(view_class=ProductSearchView), name='search'),
+    url(r'', search_view_factory(
+                view_class=ProductSearchView,
+                searchqueryset=search_sqs
+            ), name='search'),
 )
