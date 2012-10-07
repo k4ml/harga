@@ -14,6 +14,8 @@
 # ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 # OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
+import datetime
+
 from django.db import models
 
 class Keyword(models.Model):
@@ -43,6 +45,8 @@ class Product(models.Model):
     kategori = models.TextField(blank=True)
     kod_barang = models.TextField(blank=True)
     premis = models.TextField(blank=True)
+    tarikh_iso = models.DateField(null=True)
+    modified = models.DateTimeField(auto_now=True)
 
     def get_kawasan(self):
         # naive, but we'll get to this later
@@ -52,4 +56,4 @@ class Product(models.Model):
 
     class Meta:
         db_table = u'swdata'
-        managed = False
+        managed = True

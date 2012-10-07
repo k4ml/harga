@@ -30,6 +30,8 @@ duplicates = 0
 for item in item_list:
     print item
     product = Product(**item)
+    tarikh_part = product.tarikh.split('-')
+    product.tarikh_iso = '%s-%s-%s' % (tarikh_part[2], tarikh_part[1], tarikh_part[0])
 
     stop = False
     try:
