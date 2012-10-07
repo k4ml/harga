@@ -40,3 +40,7 @@ The above assume you checkout the project to ``/home/kamal/project`` when clonin
 Motivation
 ==========
 http://k4ml.blogspot.com/2012/10/aplikasi-carian-harga-barang-barang.html
+
+License
+=======
+GNU Affero General Public License V3 - http://www.gnu.org/licenses/agpl-3.0.html
