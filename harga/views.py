@@ -34,7 +34,7 @@ class ProductSearchView(SearchView):
     form_class = SearchForm
 
     def __init__(self, *args, **kwargs):
-        super(ProductSearchView, self).__init__(self)
+        super(ProductSearchView, self).__init__(self, *args, **kwargs)
         self.form_class = SearchForm
         self.template = 'search.html'
 
