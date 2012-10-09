@@ -21,6 +21,7 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     # url(r'^admin/', include(admin.site.urls)),
+    url(r'^soalan-lazim/$', 'harga.views.faq'),
     url(r'^tmp_result/', tmp_result),
     url(r'^search/', include('haystack.urls'), name='haystack-search'),
     url(r'', search_view_factory(

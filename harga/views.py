@@ -22,6 +22,7 @@ from django.http import HttpResponse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, redirect
 from django.db.models import F
+from django.views.generic import TemplateView
 
 import haystack
 from haystack.views import SearchView
@@ -76,6 +77,11 @@ class ProductSearchView(SearchView):
             out['items'].append(item)
 
         return HttpResponse(json.dumps(out, indent=4), mimetype='application/json')
+
+class FAQView(TemplateView):
+    template_name = 'faq.html'
+
+faq = FAQView.as_view()
 
 def tmp_result(request):
     context = {}
