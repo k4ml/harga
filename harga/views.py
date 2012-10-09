@@ -52,6 +52,14 @@ class ProductSearchView(SearchView):
 
             kw_obj.save()
 
+        latest_data_kws = []
+        latest_data = Product.objects.all().order_by('-tarikh_iso')[:100]
+        for ld in latest_data:
+            ld_part = ld.nama.split(' ')
+            if ld_part[0] not in latest_data_kws:
+                latest_data_kws.append(ld_part[0])
+        extra['latest_data_kws'] = latest_data_kws
+
         return extra
 
     def create_response(self):

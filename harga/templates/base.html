@@ -78,6 +78,12 @@
         </div>
         <div class="span4">
             <div class="well sidebar-nav">
+            <h3>Data Terkini</h3>
+            {% for latest_data_kw in latest_data_kws %}
+                <a href="{% url search %}?q={{ latest_data_kw }}">{{ latest_data_kw }}</a>
+            {% endfor %}
+            </div>
+            <div class="well sidebar-nav">
             <div class="fb-like" data-href="https://www.facebook.com/CariHargaBarang" data-send="false" data-width="310" data-show-faces="true"></div>
             <a href="https://www.facebook.com/CariHargaBarang">https://www.facebook.com/CariHargaBarang</a>
             </div>
