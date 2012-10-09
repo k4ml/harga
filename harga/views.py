@@ -29,7 +29,7 @@ from haystack.views import SearchView
 from haystack.forms import SearchForm
 from haystack.query import SearchQuerySet
 
-from harga.models import Product, Keyword
+from harga.models import Product, ProductExtra, Keyword
 
 class ProductSearchView(SearchView):
     form_class = SearchForm
@@ -54,6 +54,12 @@ class ProductSearchView(SearchView):
 
         latest_data_kws = []
         latest_data = Product.objects.all().order_by('-tarikh_iso')[:100]
+        for ld in latest_data:
+            ld_part = ld.nama.split(' ')
+            if ld_part[0] not in latest_data_kws:
+                latest_data_kws.append(ld_part[0])
+
+        latest_data = ProductExtra.objects.all().order_by('-tarikh_iso')[:100]
         for ld in latest_data:
             ld_part = ld.nama.split(' ')
             if ld_part[0] not in latest_data_kws:

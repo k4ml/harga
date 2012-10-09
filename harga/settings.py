@@ -118,7 +118,7 @@ INSTALLED_APPS = (
     'harga',
     'haystack',
     # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
+    'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
@@ -173,3 +173,5 @@ LOGGING = {
 HAYSTACK_SITECONF = 'harga.search_sites'
 HAYSTACK_SEARCH_ENGINE = 'whoosh'
 HAYSTACK_WHOOSH_PATH = os.path.join(HERE, 'whoosh_index')
+
+ADMIN_URL = '^admin/'

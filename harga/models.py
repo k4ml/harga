@@ -57,3 +57,29 @@ class Product(models.Model):
     class Meta:
         db_table = u'swdata'
         managed = True
+
+    def __unicode__(self):
+        return u'%s' % (self.nama)
+
+class ProductExtra(models.Model):
+    nama = models.TextField(blank=True)
+    tarikh = models.TextField(blank=True)
+    premis = models.TextField(blank=True)
+    harga = models.TextField(blank=True)
+    tarikh_iso = models.DateField(null=True)
+    modified = models.DateTimeField(auto_now=True)
+    kategori = models.CharField(max_length=255, blank=True)
+    kawasan = models.TextField(blank=True)
+    negeri = models.CharField(max_length=255, blank=True)
+
+    def get_kawasan(self):
+        return {
+            'kawasan': self.kawasan,
+            'negeri': self.negeri,
+        }
+
+    class Meta:
+        unique_together = ('nama', 'tarikh', 'premis', 'kawasan', 'negeri')
+
+    def __unicode__(self):
+        return u'%s' % (self.nama)
