@@ -78,6 +78,18 @@ class ProductExtra(models.Model):
             'negeri': self.negeri,
         }
 
+    def kod_kawasan(self):
+        return ''
+    kod_kawasan = property(kod_kawasan)
+
+    def kod_negeri(self):
+        return ''
+    kod_negeri = property(kod_negeri)
+
+    def kod_barang(self):
+        return ''
+    kod_barang = property(kod_barang)
+
     class Meta:
         unique_together = ('nama', 'tarikh', 'premis', 'kawasan', 'negeri')
 

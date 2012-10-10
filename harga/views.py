@@ -82,7 +82,7 @@ class ProductSearchView(SearchView):
             item = {}
             item['nama'] = result.object.nama
             item['premis'] = result.object.premis
-            item['kawasan'] = result.object.kawasan
+            item['kawasan'] = result.object.get_kawasan()
             item['kod_kawasan'] = result.object.kod_kawasan
             item['kod_negeri'] = result.object.kod_negeri
             item['kod_barang'] = result.object.kod_barang
