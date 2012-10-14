@@ -80,7 +80,7 @@
             <div class="well sidebar-nav">
             <h3>Data Terkini</h3>
             {% for latest_data_kw in latest_data_kws %}
-                <a href="{% url search %}?q={{ latest_data_kw }}">{{ latest_data_kw }}</a>
+                <a href="{% url search %}?q={{ latest_data_kw }}">{{ latest_data_kw|upper }}</a>
             {% endfor %}
             </div>
             <div class="well sidebar-nav">
