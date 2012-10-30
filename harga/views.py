@@ -81,6 +81,7 @@ class ProductSearchView(SearchView):
         for result in page.object_list:
             item = {}
             item['nama'] = result.object.nama
+            item['harga'] = result.object.harga
             item['premis'] = result.object.premis
             item['kawasan'] = result.object.get_kawasan()
             item['kod_kawasan'] = result.object.kod_kawasan
